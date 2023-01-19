@@ -1,29 +1,30 @@
+// Business logic
+function isVowel(letter) {
+  return 'aeiou'.includes(letter.toLowerCase());
+}
+
 //business logic
 function handleSubmission(userInput) {
-  let output = "";
+  let outputArray = "";
   const textArray1 = userInput.split("");
-  console.log(textArray1);
   textArray1.forEach(function (element){
-    console.log(output);
-    
-    if (element.toLowerCase() === "a" || element.toLowerCase() === "e" || element.toLowerCase() === element.toLowerCase() === "i" || element.toLowerCase() === "o" || element.toLowerCase() === "u" ||  element.toLowerCase() === "y") {    
-      output += "-";
-    } else {
-      output += element.toString();
+    if(isVowel(element)){
+      outputArray += "-";
+    }
+    else {
+       outputArray += element.toString();
     }
   });
-  console.log(output);
-  return output;
+  return outputArray;
 }
 
 //UI logic
 window.addEventListener("load", function(){
-
 let userInput = document.getElementById("userInput");
-let para = document.getElementById("result");
+let paraElement = document.getElementById("results");
 
 document.querySelector("form#formWord").addEventListener("submit", function(event){
-  para.innerText = handleSubmission(userInput.value);
+  paraElement.innerText = handleSubmission(userInput.value);
   event.preventDefault();
 });
 });
